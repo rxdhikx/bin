@@ -1,0 +1,165 @@
+###########################################################################
+# This .gitignore is composed of the following templates (retrieved 20250128):
+# - https://github.com/github/gitignore/blob/main/Global/Linux.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/Archives.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/Backup.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/Diff.gitignore
+# - https://github.com/github/gitignore/blob/main/Global/Patch.gitignore
+###########################################################################
+
+###################
+# Linux.gitignore #
+###################
+
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# End of https://github.com/github/gitignore/blob/main/Global/Linux.gitignore
+
+###################
+# macOS.gitignore #
+###################
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresen
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# End of https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+
+#####################
+# Windows.gitignore #
+#####################
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
+
+######################
+# Archives.gitignore #
+######################
+
+# It's better to unpack these files and commit the raw source because
+# git has its own built in compression methods.
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.gzip
+*.tgz
+*.bzip
+*.bzip2
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.xar
+*.zs
+*.tzs
+
+# Packing-only formats
+*.iso
+*.tar
+
+# Package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp
+*.txz
+
+# End of https://github.com/github/gitignore/blob/main/Global/Archives.gitignore
+
+####################
+# Backup.gitignore #
+####################
+
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+
+# End of https://github.com/github/gitignore/blob/main/Global/Backup.gitignore
+
+##################
+# Diff.gitignore #
+##################
+
+*.patch
+*.diff
+
+# End of https://github.com/github/gitignore/blob/main/Global/Diff.gitignore
+
+###################
+# Patch.gitignore #
+###################
+
+*.orig
+*.rej
+
+# End of https://github.com/github/gitignore/blob/main/Global/Patch.gitignore

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 <file> [<file> ...]"
+    echo "Creates or updates the specified file(s) and make them executable."
+    exit 1
+}
+
+# Check if at least one file is provided
+if [ "$#" -lt 1 ]; then
+    usage
+fi
+
+# Iterate over all provided arguments
+for file in "$@"; do
+    # Create the file (if it doesn't exist) or update its timestamp
+    if ! touch "$file"; then
+        echo "Error: Failed to create or update $file."
+        exit 1
+    fi
+
+    # Make the file executable
+    if ! chmod +x "$file"; then
+        echo "Error: Failed to set execute permission for $file."
+        exit 1
+    fi
+
+    echo "Created and made executable: $file"
+done

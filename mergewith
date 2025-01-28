@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Function to display usage
+usage() {
+    echo "Usage: mergewith <reference_branch>"
+    echo "Merges the latest changes from a reference branch into the current branch (updating both)."
+    exit 1
+}
+
+# Check if a reference branch is provided
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+reference_branch=$1
+
+# Ensure this is a git repository
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Error: Not inside a git repository."
+    exit 1
+fi
+
+# Capture the current branch name
+if ! current_branch=$(git rev-parse --abbrev-ref HEAD); then
+    echo "Error: Failed to determine the current git branch."
+    exit 1
+fi
+
+echo "Current branch is $current_branch"
+
+# Checkout the reference branch and pull the latest changes
+echo "Switching to the reference branch: $reference_branch"
+if ! git checkout "$reference_branch"; then
+    echo "Error: Failed to checkout the reference branch '$reference_branch'."
+    exit 1
+fi
+
+echo "Pulling latest changes for $reference_branch"
+if ! git pull; then
+    echo "Error: Failed to pull the latest changes for branch '$reference_branch'."
+    exit 1
+fi
+
+# Checkout the current branch again and pull the latest changes
+echo "Switching back to the current branch: $current_branch"
+if ! git checkout "$current_branch"; then
+    echo "Error: Failed to checkout the current branch '$current_branch'."
+    exit 1
+fi
+
+echo "Pulling latest changes for $current_branch"
+if ! git pull; then
+    echo "Error: Failed to pull the latest changes for branch '$current_branch'."
+    exit 1
+fi
+
+# Merge the reference branch into the current branch
+echo "Merging $reference_branch into $current_branch"
+if ! git merge "$reference_branch"; then
+    echo "Error: Failed to merge branch '$reference_branch' into '$current_branch'."
+    exit 1
+fi
+
+echo "Successfully updated $current_branch with changes from $reference_branch."
