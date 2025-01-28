@@ -1,6 +1,6 @@
 # bin
 
-This is a collection of scripts that I use to automate my workflow. I have written these scripts to make my life easier and I hope they can help you too.
+This is a collection of scripts that I use to automate my workflow. I wrote them to make my life easier, and I hope they can help you, too.
 
 ## Quick Start
 
@@ -36,8 +36,8 @@ Add the above line to your favorite shell configuration file (e.g. `~/.bashrc`, 
 
 ## Scripts
 
-- `add-last-commit-hash`: Add the last commit hash to a given file (`.git-blame-ignore-revs` file by default).
-- `chdirx`: Add `+x` permission to all executable files (that start with `#!`) in the given directory.
-- `mergewith`: Merge the latest changes from a reference branch into the current branch (updating both).
-- `touchx`: Create (or update) a file and add `+x` permission to it.
-- `update-mine`: Update all branches with open pull requests authored by you.
+- [`add-last-commit-hash`](https://github.com/michen00/bin/blob/main/add-last-commit-hash): Add the last commit hash to a given file (`.git-blame-ignore-revs` file by default).
+- [`chdirx`](https://github.com/michen00/bin/blob/main/chdirx): Add `+x` permission to all executable files (that start with `#!`) in the given directory.
+- [`mergewith`](https://github.com/michen00/bin/blob/main/mergewith): Merge the latest changes from a reference branch into the current branch (updating both).
+- [`touchx`](https://github.com/michen00/bin/blob/main/touchx): Create (or update) a file and add `+x` permission to it.
+- [`update-mine`](https://github.com/michen00/bin/blob/main/update-mine): Update all branches with open pull requests authored by you.
