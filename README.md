@@ -1,6 +1,6 @@
 # bin
 
-This is a collection of scripts that I use to automate my workflow. I have written these scripts to make my life easier and I hope they can help you too.
+This is a collection of scripts that I use to automate my workflow. I wrote them to make my life easier, and I hope they can help you, too.
 
 ## Quick Start
 
