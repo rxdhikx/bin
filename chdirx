@@ -42,7 +42,7 @@ shift $((OPTIND - 1))
 # Ensure exactly one argument remains (the directory)
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 [-r] <directory>"
-    echo "Add the executable permission to scripts in the specified directory"
+    echo "Adds the executable permission to scripts in the specified directory"
     exit 1
 fi
 
