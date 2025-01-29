@@ -19,3 +19,26 @@ repos:
     hooks:
       - id: markdownlint-cli2
         args: ["--config", ".markdownlint.yml"]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-blanket-type-ignore
+      - id: python-use-type-annotations
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.3
+    hooks:
+      - id: ruff
+        types_or: [python, toml]
+        args: [--fix]
+      - id: ruff-format
+        types_or: [python, toml]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or: [json, yaml]
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.28.3
+    hooks:
+      - id: typos
