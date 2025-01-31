@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Function to display help message
+usage() {
+    cat <<EOF
+Usage: how-big [directory]
+
+Displays the size of files and subdirectories in the specified directory,
+sorted in descending order by size.
+
+If no directory is provided, the current working directory is used.
+
+Examples:
+  how-big ~/.local/share
+  sudo how-big
+  how-big .
+
+Options:
+  -h, --help   Show this help message and exit
+EOF
+    exit 0
+}
+
+# Check if help flag is passed
+if [[ $# -gt 0 && ( $1 == "-h" || $1 == "--help" ) ]]; then
+    usage
+fi
+
+# Set the path to the provided argument or default to the current directory
+TARGET_DIR="${1:-.}"
+
+# Ensure the given path exists and is a directory
+if [[ ! -d "$TARGET_DIR" ]]; then
+    echo "Error: '$TARGET_DIR' is not a valid directory." >&2
+    exit 1
+fi
+
+# Run the disk usage command with the correct flag
+du -h -d 1 "$TARGET_DIR" | sort -hr
