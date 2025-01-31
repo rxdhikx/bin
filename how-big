@@ -3,31 +3,41 @@
 # Function to display help message
 usage() {
     cat <<EOF
-Usage: how-big [directory]
+Usage: how-big [-a] [directory]
 
 Displays the size of files and subdirectories in the specified directory,
 sorted in descending order by size.
 
 If no directory is provided, the current working directory is used.
 
+Options:
+  -a           Show individual file sizes in addition to directories
+  -h, --help   Show this help message and exit
+
 Examples:
   how-big ~/.local/share
   sudo how-big
   how-big .
-
-Options:
-  -h, --help   Show this help message and exit
+  how-big -a /home/user
 EOF
     exit 0
 }
 
-# Check if help flag is passed
-if [[ $# -gt 0 && ( $1 == "-h" || $1 == "--help" ) ]]; then
-    usage
-fi
+# Default behavior (show directories only)
+FILES_TOO=""
 
-# Set the path to the provided argument or default to the current directory
-TARGET_DIR="${1:-.}"
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -a) FILES_TOO="-a" ;;  # Enable file size display
+        -h|--help) usage ;;     # Show help and exit
+        *) TARGET_DIR="$1" ;;   # Assume anything else is the directory argument
+    esac
+    shift
+done
+
+# Default to the current directory if no path is given
+TARGET_DIR="${TARGET_DIR:-.}"
 
 # Ensure the given path exists and is a directory
 if [[ ! -d "$TARGET_DIR" ]]; then
@@ -35,5 +45,5 @@ if [[ ! -d "$TARGET_DIR" ]]; then
     exit 1
 fi
 
-# Run the disk usage command with the correct flag
-du -h -d 1 "$TARGET_DIR" | sort -hr
+# Run the disk usage command with optional file inclusion
+du $FILES_TOO -h -d 1 "$TARGET_DIR" | sort -hr
