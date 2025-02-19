@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# git-squash-branches: Automatically squash all commits in a branch into a single commit.
+
+# Check if Git is installed
+if ! command -v git &> /dev/null; then
+    echo "Git is not installed. Please install Git and try again."
+    exit 1
+fi
+
+# Parse arguments
+if [[ $# -eq 0 ]]; then
+    echo "Usage: git-squash-branches [BRANCH_NAME] [COMMIT_MESSAGE]"
+    echo "Squash all commits in the specified branch into a single commit."
+    echo "  BRANCH_NAME     Name of the branch to squash (default: current branch)"
+    echo "  COMMIT_MESSAGE  Commit message for the squashed commit (default: 'Squashed commit')"
+    exit 1
+fi
+
+BRANCH_NAME="${1:-$(git branch --show-current)}"
+COMMIT_MESSAGE="${2:-Squashed commit}"
+
+# Check if the branch exists
+if ! git rev-parse --verify "$BRANCH_NAME" &> /dev/null; then
+    echo "Branch '$BRANCH_NAME' does not exist."
+    exit 1
+fi
+
+# Check if the branch is the current branch
+CURRENT_BRANCH=$(git branch --show-current)
+if [[ "$BRANCH_NAME" != "$CURRENT_BRANCH" ]]; then
+    echo "Switching to branch '$BRANCH_NAME'..."
+    git checkout "$BRANCH_NAME" || exit 1
+fi
+
+# Squash commits
+echo "Squashing all commits in branch '$BRANCH_NAME'..."
+git reset --soft "$(git merge-base main "$BRANCH_NAME")"
+git commit -m "$COMMIT_MESSAGE"
+
+echo "Successfully squashed commits in branch '$BRANCH_NAME'."
