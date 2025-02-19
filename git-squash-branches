@@ -2,6 +2,13 @@
 
 # git-squash-branches: Automatically squash all commits in a branch into a single commit.
 
+# This script automates the process of squashing commits in a branch, which is a common workflow for cleaning up Git history before merging.
+
+# Why This Script?
+# Squashing commits is a frequent task in Git workflows, especially before creating pull requests.
+
+# Automating this process saves time and ensures consistency.
+
 # Check if Git is installed
 if ! command -v git &> /dev/null; then
     echo "Git is not installed. Please install Git and try again."
